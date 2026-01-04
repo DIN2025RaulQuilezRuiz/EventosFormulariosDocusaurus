@@ -1,0 +1,29 @@
+# SearchBar
+
+A controlled input field for searching.
+
+## Description
+
+A simple search input that bubbles up changes to the parent component.
+
+## Usage
+
+```jsx
+import SearchBar from '../src/components/SearchBar';
+
+const [searchTerm, setSearchTerm] = useState('');
+
+<SearchBar 
+  searchTerm={searchTerm} 
+  onSearchChange={setSearchTerm} 
+  placeholder="Buscar perfumes..." 
+/>
+```
+
+## Props
+
+| Name | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `searchTerm` | `string` | | The current search input value. |
+| `onSearchChange` | `Function` | | Callback function invoked when the search input changes, receives the new input value. |
+| `placeholder` | `string` | `"Buscar..."` | Placeholder text displayed in the search input. |

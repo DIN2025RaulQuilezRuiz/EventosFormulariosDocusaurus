@@ -1,3 +1,26 @@
+/**
+ * Detalle - Product detail page component for displaying individual perfume information
+ * 
+ * This component displays detailed information about a selected perfume product,
+ * including name, category, description, price, and purchase options. It retrieves
+ * the perfume data based on the product ID from the URL parameters.
+ * 
+ * @component
+ * @returns {JSX.Element} A section containing the perfume details with navigation
+ * and purchase functionality, or an error message if the product is not found.
+ * 
+ * @example
+ * // This component is typically used with React Router
+ * <Route path="/detalle/:id" element={<Detalle />} />
+ * 
+ * @remarks
+ * - Uses React Router's useParams hook to extract the perfume ID from the URL
+ * - Uses React Router's useNavigate hook to handle navigation back to the shop
+ * - The perfume ID is expected to be a valid numeric index from the perfumes array
+ * - Includes accessibility features with ARIA labels and semantic HTML
+ * 
+ * @throws Will display an error message if the perfume with the given ID is not found
+ */
 import { useNavigate, useParams } from 'react-router-dom';
 import perfumes from "../data/perfumes";
 
@@ -68,7 +91,7 @@ function Detalle() {
                     </div>
 
                     <p className="detalle-precio" aria-live="polite">
-                        Precio: **€{perfume.precio.toFixed(2)}**
+                        Precio: €{perfume.precio.toFixed(2)}
                     </p>
                     
                     <button 

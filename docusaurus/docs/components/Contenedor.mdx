@@ -1,0 +1,26 @@
+# Contenedor
+
+Layout wrapper component that provides the main content landmark and a container section for nested route content rendered via react-router's `<Outlet />`.
+
+## Description
+
+Structure and behavior:
+- Renders a `<main>` element with:
+  - `id="main-content"` to be targetable by skip links and anchors.
+  - `role="main"` to explicitly mark the primary content region.
+  - `tabIndex="-1"` to allow programmatic focus when skipping to main content.
+  - `className="main-contenedor primary-bg"` for layout and background styling.
+- Contains a `<section>` with `className="inner-section"` that hosts the `<Outlet />`.
+
+## Usage
+
+```jsx
+import Contenedor from '../src/components/Contenedor';
+import { Route } from 'react-router-dom';
+
+<Route element={<Contenedor />} />
+```
+
+## Props
+
+This component does not accept any props; nested route components are rendered via `<Outlet />`.

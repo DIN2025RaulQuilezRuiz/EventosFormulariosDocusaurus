@@ -1,0 +1,37 @@
+# Formulario
+
+Component for adding new perfumes to the catalog.
+
+## Description
+
+Manages a form with the following fields:
+- `nombre` (string): Perfume name - required
+- `descripcion` (string): Perfume description - optional, minimum 20 characters if provided
+- `precio` (number): Perfume price - required, must be a valid positive decimal
+- `categoria` (string): Perfume category - required, options: 'masculino' or 'femenino'
+- `imagen` (string): Image URL - optional, must start with 'http' if provided
+
+## Usage
+
+```jsx
+import Formulario from '../src/components/Formulario';
+
+<Formulario />
+```
+
+## State Management
+
+The component manages internal state for:
+- `perfumeData` (Object): Form data state containing nombre, descripcion, precio, categoria, and imagen.
+- `error` (string): Error message state for form validation feedback.
+
+## Validation
+
+- Validates required fields.
+- Checks description length (min 20 chars).
+- Validates price format (decimal) and range (positive).
+- Checks image URL format (must start with http).
+
+## Props
+
+This component does not accept any props.

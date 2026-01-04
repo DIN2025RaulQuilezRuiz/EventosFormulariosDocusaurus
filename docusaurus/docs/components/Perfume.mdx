@@ -1,0 +1,93 @@
+# Perfume
+
+Perfume card component that displays perfume information in a navigable card format.
+
+## Description
+
+Renders an accessible article capable of navigation via `react-router-dom`'s `Link`.
+
+## Usage
+
+```jsx
+import Perfume from '../src/components/Perfume';
+
+<Perfume 
+  indexPerfume={1} 
+  foto="/images/perfume1.jpg" 
+  nombre="Eau de Toilette"
+>
+  Fresh and elegant fragrance
+</Perfume>
+```
+
+## Props
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `indexPerfume` | `number` | The unique identifier/index of the perfume product. Used in the navigation URL. |
+| `foto` | `string` | The URL/path of the perfume bottle image. |
+| `nombre` | `string` | The name of the perfume product. |
+| `children` | `ReactNode` | The description text or content of the perfume. |
+
+## Examples directly from Data
+
+Here is how the component would look using actual data from `src/data/perfumes.js`.
+
+### Single Item (Dior Sauvage)
+
+```jsx
+// Data from perfumes.js
+const diorSauvage = {
+  nombre: "Dior Sauvage",
+  descripcion: "Fragancia fresca con notas de bergamota y ambroxan, inspirada en paisajes salvajes.",
+  imagen: "https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dw19c30c58/Y0785220/Y0785220_F078524009_E01_GHC.jpg?sw=800"
+};
+
+// Component Usage
+<Perfume 
+  indexPerfume={0} 
+  foto={diorSauvage.imagen} 
+  nombre={diorSauvage.nombre}
+>
+  {diorSauvage.descripcion}
+</Perfume>
+```
+
+### Single Item (Chanel Coco Mademoiselle)
+
+```jsx
+// Data from perfumes.js
+const coco = {
+  nombre: "Chanel Coco Mademoiselle",
+  descripcion: "Aroma floral y elegante con toques de naranja, jazmín y pachulí.",
+  imagen: "https://cdn.deloox.com/cdn/product/1276927/441082_500.jpg"
+};
+
+// Component Usage
+<Perfume 
+  indexPerfume={1} 
+  foto={coco.imagen} 
+  nombre={coco.nombre}
+>
+  {coco.descripcion}
+</Perfume>
+```
+
+### Iterating over the List
+
+If you have the `perfumes` array imported:
+
+```jsx
+// import perfumes from '../src/data/perfumes';
+
+{perfumes.map((perfume, index) => (
+  <Perfume 
+    key={index}
+    indexPerfume={index}
+    foto={perfume.imagen}
+    nombre={perfume.nombre}
+  >
+    {perfume.descripcion}
+  </Perfume>
+))}
+```
