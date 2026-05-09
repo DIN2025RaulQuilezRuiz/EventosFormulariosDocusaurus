@@ -1,0 +1,87 @@
+# List
+
+Renders a focusable card-like article for an individual (performer or actor) displaying their photo, name, and an optional highlighted state.
+
+## Description
+
+The `List` component uses a semantic `<article>` element to represent an individual card. It is optimized for accessibility and keyboard navigation.
+
+- **Keyboard Focusable**: The root element is focusable via keyboard (`tabIndex="0"`).
+- **Contextual `aria-label`**: It includes the name, and if `esNota10` is true, it adds ", intérprete en película destacada" to provide context for screen readers.
+- **Image Accessibility**: Uses an explicit `alt` text for the image, and a visually-hidden `<figcaption>` reads the `children` content for assistive technologies.
+
+## Usage
+
+```jsx
+import List from '../src/components/List';
+
+<List 
+  foto="/images/actor.jpg" 
+  nombre="Juan Pérez" 
+  esNota10={true}
+>
+  Breve biografía o descripción del intérprete.
+</List>
+```
+
+## Props
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `foto` | `string` | **Required.** Source URL or path of the performer's photo. |
+| `nombre` | `string` | **Required.** Display name of the performer. |
+| `esNota10` | `boolean` | When `true`, applies highlighted styling (red text) and appends contextual text to the accessibility label. Default is `false`. |
+| `children` | `ReactNode` | Optional descriptive content or biography. Rendered visibly as a paragraph and as a hidden `figcaption`. |
+
+## Examples
+
+Here is how the component would look using actual data examples.
+
+### Default State (Bruce Willis)
+
+```jsx
+const bruceWillis = {
+  nombre: 'Bruce Willis',
+  foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Bruce_Willis_by_Gage_Skidmore_3.jpg/330px-Bruce_Willis_by_Gage_Skidmore_3.jpg',
+  descripcion: 'Bruce Willis es un actor, productor y cantante estadounidense conocido por su papel en Jungla de cristal y El sexto sentido.'
+};
+
+<List 
+  foto={bruceWillis.foto} 
+  nombre={bruceWillis.nombre}
+>
+  {bruceWillis.descripcion}
+</List>
+```
+
+### Highlighted State / Destacada (Haley Joel Osment)
+
+```jsx
+const haleyJoelOsment = {
+  nombre: 'Haley Joel Osment',
+  foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Haley_Joel_Osment_TIFF_2014.jpg/500px-Haley_Joel_Osment_TIFF_2014.jpg',
+  descripcion: 'Haley Joel Osment es un actor estadounidense conocido por su interpretación del niño que ve gente muerta en El sexto sentido.'
+};
+
+<List 
+  foto={haleyJoelOsment.foto} 
+  nombre={haleyJoelOsment.nombre}
+  esNota10={true}
+>
+  {haleyJoelOsment.descripcion}
+</List>
+```
+
+### Without Description
+
+```jsx
+const actor = {
+  nombre: 'Bruce Willis',
+  foto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Bruce_Willis_by_Gage_Skidmore_3.jpg/330px-Bruce_Willis_by_Gage_Skidmore_3.jpg'
+};
+
+<List 
+  foto={actor.foto} 
+  nombre={actor.nombre}
+/>
+```
